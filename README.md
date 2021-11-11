@@ -6,6 +6,7 @@
 -folder structure
 -ssr/ssg
 -routing
+-api routing
 -nested routing
 -data featching
 -getStaticProps
