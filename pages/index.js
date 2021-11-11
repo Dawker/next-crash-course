@@ -1,6 +1,5 @@
 
 import { ArticleList, Meta } from '../components'
-import { server } from '../config'
 
 export default function Home({ articles }) {
   return (
@@ -12,7 +11,7 @@ export default function Home({ articles }) {
 }
 
 export const getStaticProps = async () => {
-  const res = await fetch(`${server}/api/articles`)
+  const res = await fetch(`https://jsonplaceholder.typicode.com/posts`)
   const articles = await res.json()
 
   return {

@@ -1,9 +1,11 @@
 
 import Link from 'next/link'
 import { Meta } from '../../../components'
-import { server } from '../../../config'
+
+const url = 'https://jsonplaceholder.typicode.com'
 
 const article = ({ article }) => {
+
   return (
     <>
       <Meta title={article.title} />
@@ -18,7 +20,7 @@ const article = ({ article }) => {
 }
 
 export const getStaticProps = async (ctx) => {
-  const res = await fetch(`${server}/api/articles/${ctx.params.id}`)
+  const res = await fetch(`${url}/posts/${ctx.params.id}`)
   const article = await res.json();
   return {
     props: {
@@ -28,7 +30,7 @@ export const getStaticProps = async (ctx) => {
 }
 
 export const getStaticPaths = async () => {
-  const res = await fetch(`${server}/api/articles/`)
+  const res = await fetch(`${url}/posts`)
   const articles = await res.json();
   const paths = articles.map(article => ({
     params: {
